@@ -3,7 +3,7 @@
  - Naming standards
      function,method,variable => Camel Case
      class => Poscal Case
-     folder => KEBAB Case
+     folder, file => KEBAB Case
      Css => SNAKE Case
 
  - Error handling
