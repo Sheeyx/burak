@@ -9,3 +9,10 @@
  - Error handling
 
  */
+
+ /*
+    Traditional API
+    REST API
+    GraphQL API
+    ....
+ */
