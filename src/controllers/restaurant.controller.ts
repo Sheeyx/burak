@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import { MemberInput, LoginInput, AdminRequest } from '../libs/types/member';
 import { MemberType } from '../libs/enums/member.enum';
 import session from 'express-session';
+import Errors, { Message } from '../libs/Errors';
 
 const memberService = new MemberService();
 
@@ -63,22 +64,47 @@ restaurantController.processSignup = async (req: AdminRequest, res: Response) =>
     }
 }
 
-restaurantController.processLogin = async(req: AdminRequest, res: Response) => {
+restaurantController.processLogin = async (
+    req: AdminRequest,
+    res: Response
+  ) => {
     try {
-        console.log("processLogin");
-        console.log("body:", req.body);
-        const input: LoginInput = req.body;
-    
-        const result = await memberService.processLogin(input);
+      console.log("processLogin");
+      const input: LoginInput = req.body;
+  
+      const result = await memberService.processLogin(input);
+      ///// TODO: SESSION AUTHENTICATION
+  
+      ///// TODO: SESSION AUTHENTICATION
+  
+      req.session.member = result;
+      req.session.save(function () {
+        res.send(result);
+      });
+    } catch (err) {
+      console.log("Error, on Login Page", err);
+      const message =
+        err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
+      res.send(
+        `<script>alert(${message}); window.location.replace('admin/login')<script>`
+      );
+    }
+  };
 
-        req.body.member = result;
-        req.session.save(function(){
-            res.send(result);
-        });
-      } catch (err) {
-        console.log("Error, on Login Page", err);
-        res.send(err);
-      }
-}
+
+restaurantController.checkAuthSession = async (
+    req: AdminRequest,
+    res: Response
+  ) => {
+    try {
+      console.log("checkAuthSession");
+      if (req.session?.member)
+        res.send(` <script>alert("Hi ${req.session.member.memberNick}")<script>`);
+      else res.send(`<script>alert("${Message.NOT_AUTHENTIFICATED}")<script>`);
+    } catch (err) {
+      console.log("Error, on Login Page", err);
+      res.send(err);
+    }
+  };
 
 export default restaurantController;
