@@ -19,10 +19,18 @@ routerAdmin.get('/logout', restaurantController.logout);
 
 /* Product */
 
-routerAdmin
-.get('/product/all', productController.getAllProducts)
-.post('/product/create', productController.createNewProduct)
-.post('/product/:id', productController.updateChosenProduct);
+routerAdmin.
+get(
+'/product/all', 
+restaurantController.verifyRestaurant,
+productController.getAllProducts
+)
+.post('/product/create', 
+restaurantController.verifyRestaurant,
+productController.createNewProduct)
+.post('/product/:id', 
+productController.createNewProduct,
+productController.updateChosenProduct);
 
 /* User */
 
