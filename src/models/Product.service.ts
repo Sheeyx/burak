@@ -14,6 +14,7 @@ class ProductService {
     //SPA
     //SSR
 
+    // Create
     public async createNewProduct(input: ProductInput): Promise<Product> {
         try {
             return await this.productModel.create(input);          
@@ -24,6 +25,15 @@ class ProductService {
         }
     }
 
+    // Get All
+    public async getAllProducts(): Promise<Product[]> {
+        const result = await this.productModel.find().exec();
+        if(!result) throw new Errors(HttpCode.NOT_FOUND, Message.NO_DATA_FOUND);
+
+        return result;
+    }
+
+    //Update
     public async updateChosenProduct(id: string,input: ProductUpdateInput): Promise<Product> {
         // string = Obeject id
         id = shapeIntoMongooseObjectId(id);
