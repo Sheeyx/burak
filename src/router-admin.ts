@@ -32,11 +32,13 @@ get(
 restaurantController.verifyRestaurant,
 productController.getAllProducts
 )
-.post('/product/create', 
-restaurantController.verifyRestaurant,
-// uploadProductImage.single('productImage'),
-makeUploader("products").array('productImages',5),
-productController.createNewProduct)
+.post(
+    "/product/create",
+    restaurantController.verifyRestaurant,
+    // uploadProductImage.single("productImage"),
+    makeUploader("products").array("productImages",5),
+    productController.createNewProduct
+  )
 .post('/product/:id', 
 productController.createNewProduct,
 productController.updateChosenProduct);
