@@ -39,9 +39,11 @@ productController.getAllProducts
     makeUploader("products").array("productImages",5),
     productController.createNewProduct
   )
-.post('/product/:id', 
-productController.createNewProduct,
-productController.updateChosenProduct);
+.post(
+  "/product/:id",
+  restaurantController.verifyRestaurant,
+  productController.updateChosenProduct
+);
 
 /* User */
 
