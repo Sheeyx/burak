@@ -48,7 +48,11 @@ productController.getAllProducts
 /* User */
 
 routerAdmin
-.get("/user/all", restaurantController.verifyRestaurant,restaurantController.getUsers)
-.post("/user/edit", restaurantController.verifyRestaurant,restaurantController.updateChosenUsers)
+.get("/user/all", 
+restaurantController.verifyRestaurant,
+restaurantController.getUsers)
+.post("/user/edit", 
+restaurantController.verifyRestaurant,
+restaurantController.updateChosenUsers)
 
 export default routerAdmin;
