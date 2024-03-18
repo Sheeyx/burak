@@ -81,12 +81,11 @@ restaurantController.processLogin = async (
   ) => {
     try {
       console.log("processLogin");
+      
       const input: LoginInput = req.body;
-  
+      console.log(req.body, "req.body");
+      
       const result = await memberService.processLogin(input);
-      ///// TODO: SESSION AUTHENTICATION
-  
-      ///// TODO: SESSION AUTHENTICATION
   
       req.session.member = result;
       req.session.save(function () {
@@ -97,8 +96,8 @@ restaurantController.processLogin = async (
       const message =
         err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
       res.send(
-        `<script>alert(${message}); window.location.replace('admin/login')<script>`
-      );
+        `<script>alert("${message}"); window.location.replace('admin/login')</script>`
+        );
     }
   };
 
