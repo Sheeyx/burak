@@ -30,8 +30,10 @@ productController.getAllProducts = async (req: Request, res: Response)=>{
 productController.createNewProduct = async (req: AdminRequest, res: Response) => {
     try {
       console.log("createNewProduct");
+      console.log(req.body);
+      console.log(!req.files?.length);
       
-      if(!req.files?.length) 
+    if(!req.files?.length) 
         throw new Errors(HttpCode.INTERNAL_SERVER_ERROR, Message.CREATE_FAILED)
 
     const data: ProductInput = req.body;
