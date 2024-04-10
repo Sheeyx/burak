@@ -11,6 +11,8 @@ router.post('/member/logout', memberController.verifyAuth, memberController.logo
 router.get('/member/detail', memberController.verifyAuth, memberController.getMemberDetail);
 router.post('/member/update', memberController.verifyAuth, uploader("member").single("memberImage"), memberController.updateMember);
 
+router.get('/member/top-users', memberController.getTopUsers)
+
 /*** Product ***/
 
 /*** Order ***/
