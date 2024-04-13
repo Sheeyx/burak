@@ -1,6 +1,7 @@
 import express from 'express';
 import memberController from './controllers/member.controller';
 import uploader from './libs/utils/uploader';
+import productController from './controllers/product.controller';
 
 const router = express.Router();
 
@@ -16,6 +17,7 @@ router.get('/member/top-users', memberController.getTopUsers)
 
 /*** Product ***/
 
+router.get("/product/all", productController.getProducts)
 /*** Order ***/
 
 
