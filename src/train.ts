@@ -1,18 +1,12 @@
-// Z-TASK:
+// ZA-TASK:
 
-// Shunday function yozing, uni sonlardan tashkil topgan array qabul qilsin. Function arraydagi juft sonlarni yigindisini qaytarsin
-// MASALAN: sumEvens([1,2,3]) return 2
+// Shunday function yozing, u array ichidagi objectlarni “age” qiymati boyicha sortlab bersin. 
+// MASALAN: sortByAge([{age:23}, {age:21}, {age:13}]) return [{age:13}, {age:21}, {age:23}]
 
 
-function sumEvens(array: number[]) {
-    const result = array.reduce((accumulator:number, currentValue: number)=>{
-        if(currentValue % 2 == 0){
-            return accumulator + currentValue
-        }
-        return accumulator;
-    },0);
-    return result;
+function sortByAge(arr: { age: number }[]): { age: number }[] {
+    return arr.sort((a, b) => a.age - b.age);
 }
 
-let result = sumEvens([1,2,3]);
+let result = sortByAge([{age:23}, {age:21}, {age:13}]);
 console.log("Result: ",result);
