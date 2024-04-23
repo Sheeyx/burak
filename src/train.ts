@@ -1,12 +1,11 @@
-// ZA-TASK:
+// ZB-TASK:
 
-// Shunday function yozing, u array ichidagi objectlarni “age” qiymati boyicha sortlab bersin. 
-// MASALAN: sortByAge([{age:23}, {age:21}, {age:13}]) return [{age:13}, {age:21}, {age:23}]
+// Shunday function yozing, uni 2 ta number parametri bolsin va berilgan sonlar orasidan random raqam return qilsin
+// MASALAN: randomBetween(30, 50) return 45
 
-
-function sortByAge(arr: { age: number }[]): { age: number }[] {
-    return arr.sort((a, b) => a.age - b.age);
+function randomBetween(min:number, max:number) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-let result = sortByAge([{age:23}, {age:21}, {age:13}]);
+let result = randomBetween(30, 50);
 console.log("Result: ",result);
