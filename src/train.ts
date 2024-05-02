@@ -1,15 +1,12 @@
-// ZE-TASK:
+// ZF-TASK:
 
-// Shunday function yozing, uni  string parametri bolsin. String ichida takrorlangan harflarni olib tashlab qolganini qaytarsin
-// MASALAN: removeDuplicate('stringg') return 'string'
+// Shunday function yozing, uni string parametri bolsin. String ichidagi har bir sozni bosh harflarini katta harf qilib qaytarsin lekin 1 yoki 2 harfdan iborat sozlarni esa oz holicha qoldirsin.
+// MASALAN: capitalizeWords('name should be a string') return 'Name Should be a String'
 
 
-function removeDuplicate(str: string) {
-    return str
-        .split('')
-        .filter((char, index, self) => self.indexOf(char) === index)
-        .join('');
+function capitalizeWords(sentence: string): string {
+    return sentence.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }
 
-let result = removeDuplicate('stringg');
+let result = capitalizeWords('name should be a string');
 console.log("Result: ",result);
